@@ -1,0 +1,5 @@
+[commands]
+about = """A terminal homepage
+GitHub: https://github.com/yeying-xingchen/terminal-homepage"""
+whoami = "yeying-xingchen"
+clear = "Didn't edit this command,it is default command,if you edit,nothing to do."

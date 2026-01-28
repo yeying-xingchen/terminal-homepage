@@ -1,3 +1,4 @@
+import datetime
 from sanic import Sanic
 from sanic.response import json, html
 import toml
@@ -34,7 +35,10 @@ async def execute_command(request):
         if command == 'clear':
             # clear命令由前端处理，后端返回特殊标识
             return json({'output': 'CLEAR_TERMINAL', 'status': 'clear'})
-        return json({'output': config['commands'][cmd], 'status': 'success'})
+        output = config['commands'][cmd]
+        output.replace('\n', '<br>')
+        output.replace('<time>', datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        return json({'output': output, 'status': 'success'})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
