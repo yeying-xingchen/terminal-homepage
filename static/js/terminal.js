@@ -1,10 +1,10 @@
 class Terminal {
     constructor() {
         this.output = document.getElementById('terminalOutput');
-        this.input = document.getElementById('commandInput');
         this.body = document.getElementById('terminalBody');
         this.history = [];
         this.historyIndex = -1;
+        this.input = null; // 初始化为空，将在createNewInputLine中设置
         
         this.init();
     }
@@ -14,14 +14,8 @@ class Terminal {
         this.addOutput('<span class="welcome">Welcome to Terminal Homepage!</span>', 'welcome');
         this.addOutput('<span class="info">Type "help" for available commands.</span>', 'info');
         
-        this.input.addEventListener('keydown', (e) => {
-            this.handleKeyDown(e);
-        });
-        
-        // 确保输入框有焦点
-        setTimeout(() => {
-            this.input.focus();
-        }, 100);
+        // 创建第一个输入行
+        this.createNewInputLine();
     }
     
     async handleKeyDown(e) {
@@ -81,16 +75,62 @@ class Terminal {
             this.addOutput(`错误: ${error.message}`, 'error');
         }
         
-        // 清空输入框并聚焦
-        this.input.value = '';
+        // 清空当前输入框
+        if (this.input) {
+            this.input.value = '';
+        }
+        
         this.scrollToBottom();
+        
+        // 先移除现有的所有输入行
+        const existingInputs = this.output.querySelectorAll('.command-line');
+        existingInputs.forEach(inputElement => {
+            inputElement.remove();
+        });
+        
+        // 创建新的输入行
+        this.createNewInputLine();
+    }
+    
+    createNewInputLine() {
+        // 创建新的输入行并添加到输出区域的末尾
+        const newInputLine = document.createElement('div');
+        newInputLine.className = 'command-line';
+        newInputLine.innerHTML = `
+            <span class="prompt">guest@terminal:~$ </span>
+            <input type="text" class="command-input dynamic-input" autocomplete="off">
+        `;
+        // 将输入行添加到terminalOutput的末尾，使其紧跟在输出之后
+        this.output.appendChild(newInputLine);
+        
+        // 获取新创建的输入框并设置事件监听器
+        this.input = newInputLine.querySelector('.command-input');
+        if (this.input) {
+            this.input.addEventListener('keydown', (e) => {
+                this.handleKeyDown(e);
+            });
+            
+            // 确保新输入框获得焦点
+            setTimeout(() => {
+                this.input.focus();
+            }, 10);
+        }
     }
     
     clearTerminal() {
-        // 清除所有输出，保留输入行
+        // 清除所有输出
         this.output.innerHTML = '';
-        // 添加新的输入行
+        
+        // 移除所有现有的输入行
+        const existingInputs = this.output.querySelectorAll('.command-line');
+        if (existingInputs.length > 0) {
+            existingInputs.forEach(inputElement => inputElement.remove());
+        }
+        
+        // 添加清空提示
         this.addOutput('<span class="info">终端已清空</span>', 'info');
+        // 创建新的输入行
+        this.createNewInputLine();
     }
     
     addOutput(text, className = '') {

@@ -79,44 +79,13 @@ body {
     min-height: 24px;
 }
 
-.command-line:last-child {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #333;
-}
-
-#commandInput {
-    background: transparent;
-    border: none;
-    color: #ccc;
-    font-family: 'Consolas', 'Courier New', monospace;
-    font-size: 16px;
-    outline: none;
-    flex: 1;
-    margin-left: 5px;
-}
-
 .welcome-message h1 {
-    color: #4ec9b0;
     margin-bottom: 10px;
     font-size: 24px;
 }
 
 .welcome-message p {
     margin-bottom: 15px;
-    color: #9cdcfe;
-}
-
-.system-info {
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid #333;
-    font-size: 14px;
-}
-
-.system-info p {
-    margin-bottom: 5px;
-    color: #d4d4d4;
 }
 
 #terminalOutput {
@@ -147,18 +116,11 @@ body {
      margin-bottom: 5px;
  }
 
-.command-line {
-    display: flex;
-    align-items: center;
-    min-height: 24px;
-}
-
 .prompt {
-    color: #4ec9b0;
     white-space: nowrap;
 }
 
-#commandInput {
+.command-input {
     background: transparent;
     border: none;
     color: #ccc;
@@ -166,7 +128,8 @@ body {
     font-size: 16px;
     outline: none;
     flex: 1;
-    padding: 0 5px;
+    width: 90%;
+    height: 100%;
     caret-color: #ccc;
 }
 
