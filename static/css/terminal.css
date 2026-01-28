@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Consolas', 'Courier New', monospace;
+    background-color: #263238;
+    overflow: hidden;
+}
+
+.terminal-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-header {
+    background-color: #3c3c3c;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.terminal-title {
+    color: #ccc;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control-btn {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.control-btn:nth-child(1) {
+    background-color: #ffbd44;
+}
+
+.control-btn:nth-child(2) {
+    background-color: #00d400;
+}
+
+.close-btn {
+    background-color: #ff5f57;
+}
+
+.terminal-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    color: #ccc;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+}
+
+.command-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    min-height: 24px;
+}
+
+.command-line:last-child {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #333;
+}
+
+#commandInput {
+    background: transparent;
+    border: none;
+    color: #ccc;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 16px;
+    outline: none;
+    flex: 1;
+    margin-left: 5px;
+}
+
+.welcome-message h1 {
+    color: #4ec9b0;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.welcome-message p {
+    margin-bottom: 15px;
+    color: #9cdcfe;
+}
+
+.system-info {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #333;
+    font-size: 14px;
+}
+
+.system-info p {
+    margin-bottom: 5px;
+    color: #d4d4d4;
+}
+
+#terminalOutput {
+    flex: 1;
+    margin-bottom: 10px;
+}
+
+.welcome {
+    color: #4ec9b0;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.info {
+    color: #9cdcfe;
+}
+
+.error {
+    color: #f44747;
+}
+
+.cmd-history {
+    color: #d4d4d4;
+    font-weight: bold;
+}
+
+.output-line {
+     margin-bottom: 5px;
+ }
+
+.command-line {
+    display: flex;
+    align-items: center;
+    min-height: 24px;
+}
+
+.prompt {
+    color: #4ec9b0;
+    white-space: nowrap;
+}
+
+#commandInput {
+    background: transparent;
+    border: none;
+    color: #ccc;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 16px;
+    outline: none;
+    flex: 1;
+    padding: 0 5px;
+    caret-color: #ccc;
+}
+
+.output-line {
+    margin-bottom: 8px;
+    word-break: break-word;
+}
+
+.error {
+    color: #f44747;
+}
+
+.success {
+    color: #89d185;
+}
+
+.info {
+    color: #9cdcfe;
+}
+
+.cmd-history {
+    color: #d4d4d4;
+}
+
+.cursor {
+    color: #ccc;
+    animation: blink 1s infinite;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* 滚动条样式 */
+.terminal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+    background: #252526;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background: #454545;
+    border-radius: 4px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a;
+}

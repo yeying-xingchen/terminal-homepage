@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Homepage</title>
+    <link rel="stylesheet" href="/static/css/terminal.css">
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-title">Terminal</div>
+            <div class="terminal-controls">
+                <span class="control-btn"></span>
+                <span class="control-btn"></span>
+                <span class="control-btn close-btn"></span>
+            </div>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+            <div id="terminalOutput"></div>
+            <div class="command-line">
+                <span class="prompt">guest@terminal:~$ </span>
+                <input type="text" id="commandInput" autocomplete="off">
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/terminal.js"></script>
+</body>
+</html>
