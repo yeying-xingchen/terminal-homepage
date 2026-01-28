@@ -31,6 +31,9 @@ async def execute_command(request):
     elif cmd not in config['commands']:  # 检查命令是否在配置文件中
         return json({'output': 'Invalid command', 'status': 'error'})
     else:
+        if command == 'clear':
+            # clear命令由前端处理，后端返回特殊标识
+            return json({'output': 'CLEAR_TERMINAL', 'status': 'clear'})
         return json({'output': config['commands'][cmd], 'status': 'success'})
 
 if __name__ == "__main__":
